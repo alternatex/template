@@ -1,0 +1,6 @@
+[submodule "lib/vendor/alternatex/store"]
+	path = lib/vendor/alternatex/store
+	url = https://github.com/alternatex/store
+[submodule "docs"]
+	path = docs
+	url = https://github.com/alternatex/XHTML-Templates.wiki.git
