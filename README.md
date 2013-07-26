@@ -16,17 +16,22 @@ Installation
 ---------------
 ```bash
 
-git clone ...
+git clone https://github.com/alternatex/xhtml-templates.git
 git submodule init
 git submodule update 
-# ...
 ```
 
 Usage
 ---------------
 ```html
 <ul class="contacts">
-	<li></li>
+  <li>
+    <h1 class="fullname">Colbert, Stephen</h1>
+    <ul class="friends">
+      <li class="firstname">Bode</li>
+      <li class="lastname">Miller</li>
+    </ul>
+  </li>
 </ul>
 
 ```
