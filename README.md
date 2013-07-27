@@ -5,13 +5,6 @@ Overview
 ---------------
 XHTML templating engine inspired by [Weld](https://github.com/tmpvar/weld)
 
-Background
----------------
-...
-
-### Articles
-- [micro-templates-are-dead](http://blog.nodejitsu.com/micro-templates-are-dead)
-
 Installation
 ---------------
 ```bash
@@ -36,21 +29,10 @@ Usage
 
 ```
 
-Implementation How To's
----------------
-...
-
-### Conditionals
-### Iterations
-
 Features
 ---------------
 - Iteration
 - Defaults
-
-Performance
----------------
-...
 
 Roadmap
 ---------------
@@ -61,6 +43,7 @@ Roadmap
 
 References
 ---------------
+- [Micro templates are dead](http://blog.nodejitsu.com/micro-templates-are-dead)
 - [Weld](https://github.com/tmpvar/weld)
 
 License
