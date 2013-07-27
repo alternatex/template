@@ -3,4 +3,4 @@
 	url = https://github.com/alternatex/store
 [submodule "docs"]
 	path = docs
-	url = https://github.com/alternatex/XHTML-Templates.wiki.git
+	url = https://github.com/alternatex/xhtml-templates.wiki.git
