@@ -41,7 +41,7 @@ Roadmap
   - JSDOM
   - PHP
 
-References
+Resources
 ---------------
 - [Micro templates are dead](http://blog.nodejitsu.com/micro-templates-are-dead)
 - [Weld](https://github.com/tmpvar/weld)
