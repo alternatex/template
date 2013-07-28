@@ -1,15 +1,15 @@
-XHTML-Templates
+Template
 ===============
 
 Overview
 ---------------
-XHTML templating engine inspired by [Weld](https://github.com/tmpvar/weld)
+Templating engine inspired by [Weld](https://github.com/tmpvar/weld)
 
 Installation
 ---------------
 ```bash
 
-git clone https://github.com/alternatex/xhtml-templates.git
+git clone https://github.com/alternatex/template.git
 git submodule init
 git submodule update 
 ```
@@ -52,4 +52,4 @@ License
 Released under two licenses: new BSD, and MIT. You may pick the
 license that best suits your development needs.
 
-https://raw.github.com/alternatex/xhtml-templates/master/LICENSE
+https://raw.github.com/alternatex/template/master/LICENSE
