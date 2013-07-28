@@ -36,6 +36,7 @@ Features
 
 Roadmap
 ---------------
+- DOM Model Updates
 - Documentation/Examples
 - Server 
   - JSDOM
