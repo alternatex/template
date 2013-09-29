@@ -1,0 +1,240 @@
+<!doctype html>
+<head>
+  <title>// HTML (only) templating engine!</title>
+  <script> var define = function define(deps, fnc){ return fnc(); };</script>
+  <script src="./lib/core/template.js"></script>  
+  <script src="./lib/vendor/alternatex/store/src/client/store.js"></script>
+  <style type="text/css">
+  	th {text-align: left;}
+  </style>
+</head>
+<body>
+	<h1>
+		TODO: perf. comparasion to weld + extra feature ... *
+		<br/>
+		data-replace on accessor (eg. for paging) ... ! 
+		<br/>
+		» config support to bind all data acccessors? to allow updates in multi widgets without knowing what is used where (thus keeping knowledge about structure actual nest level to 0)
+	</h1>
+<div>
+<script id="template" class="" type="text/html">
+<div class="contact">
+  <h1 class="title"></h1>  
+</div>
+<div class="contact">
+  <p class="description"></p>
+</div>
+</script>
+<script id="template2" class="" type="text/html">
+<div class="contacts">
+  <div class="contact2">
+  <span class="firstname"></span>
+  <form>
+    <input type="email" class="firstname" required="required" validate="validate"/>
+    <input type="email" class="lastname" required="required" validate="validate"/>
+    <button>submit</button>
+  </form>
+  <ul>    
+    <li class="friends">
+      <div class="contact">
+        <span class="firstname"></span> <strong class="lastname"></strong> (<span class="sex">unknown</span>) 
+      </div>
+    </li>
+  </ul>  
+  <h1 class="lastname">lastname</h1>
+  <p onblur="console.log(this.innerHTML);" contenteditable="true" class="description">his description</p>
+  </div>
+</div>
+</script>
+<script id="template3" class="" type="text/html">
+	<table style="display: block; float: left;">
+		<thead>
+			<tr>
+			  <th>ID</th>
+			  <th>Lastname</th>  
+        <th>Firstname</th>
+			  <th>Firstname</th>
+			  <th>Lastname</th>  
+			  <th>Path</th>
+			  <th>Type</th>
+			</tr>
+		</thead>
+		<tbody class="entries">
+			<tr>
+			  <td class="ID"></td>
+			  <td class="Lastname"></td>  
+        <td class="Firstname"></td>
+			  <td class="Firstname"></td>
+			  <td class="Lastname"></td>  
+			  <td class="path"></td>
+			  <td class="sling:resourceType"></td>
+			</tr>
+		</tbody>
+	</table>
+	<table>
+		<thead>
+			<tr>
+			  <th>ID</th>
+			  <th>Firstname</th>
+			  <th>Firstname</th>
+			  <th>Firstname</th>
+			  <th>Lastname</th>  
+			  <th>Path</th>
+			  <th>Type</th>
+			</tr>
+		</thead>
+	</table>	
+	<div class="entries">
+		<table>
+			<tbody>
+				<tr>
+				  <td class="ID"></td>
+				  <td class="Firstname"></td>
+				  <td class="Lastname"></td>  
+				  <td class="path"></td>
+				  <td class="sling:resourceType"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+  <div class="controls">
+    <a href="#prev">prev</a>
+    <a href="#next">next</a>
+  </div>
+</script>
+<script id="template4" class="" type="text/html">
+  <span class="num1"></span> 
+  <span class="num2"></span> 
+</script>
+<script>
+  var boundObj3, 
+      template = document.getElementById('template').innerHTML,
+      template2 = document.getElementById('template2').innerHTML,
+      template3 = document.getElementById('template3').innerHTML,
+      template4 = document.getElementById('template4').innerHTML,
+      objects = [],
+      data = {
+        num1: "num1 chuchuchu",
+        num2: "num2 chachacha",
+        contact: {
+          title: "firstname",
+          firstname: "James",
+          description: "description"
+        },
+        contact2: {
+          firstname: "James",
+          lastname: "Johnson",
+          description: "Description",
+          friends: [
+            { 
+              contact: {
+                firstname: "firstname111",
+                lastname: "thelastsone111",
+                sex: "male"
+              } 
+            },
+            { 
+              contact: {
+                firstname: "firstname222",
+                lastname: "thelastsone222",
+                sex: "female"
+              } 
+            },
+            { 
+              contact: {
+                firstname: "firstname333",
+                lastname: "thelastsone333"
+              } 
+            },
+            { 
+              contact: {
+                firstname: "firstname444",
+                lastname: "thelastsone444"
+              } 
+            },
+            { 
+              contact: {
+                firstname: "firstname555",
+                lastname: "thelastsone555",
+                sex: "female"
+              } 
+            },
+            { 
+              contact: {
+                firstname: "firstname666",
+                lastname: "thelastsone666",
+                sex: "male"
+              } 
+            }            
+          ]
+        }
+      };
+    
+    var databinder = {};
+
+    var boundObj1 = wrapwalker2(template, data, undefined, databinder, true, 'template1');
+    boundObj1.appendTo(document.body);
+
+    var boundObj2 = wrapwalker2(template2, data, undefined, databinder, true, 'template2');
+    boundObj2.appendTo(document.body);
+
+    var boundObj4 = wrapwalker2(template4, data, undefined, databinder, true, 'template3');
+    boundObj4.appendTo(document.body);
+
+    /*
+    boundObj2.firstname();
+    boundObj2.lastname();
+    boundObj2.description();
+    */
+
+    data.contact2.firstname="Alessio";
+    boundObj2.firstname();
+    //boundObj2.list();
+  /*console.profile();
+  for(var i=0;i<100;i++) {
+    var boundObj = wrapwalker2(template, data);
+    boundObj.title("test");
+    boundObj.description();
+    boundObj.appendTo(document.body);
+    objects.push(boundObj)
+  }
+  console.profileEnd();
+
+  console.log(objects);
+  
+  var interval = setInterval(function(){
+    for(var i=0;i<10;i++) {
+      objects[i].title(new Date());
+    }
+  }, 1);
+
+  setTimeout(function(){clearInterval(interval)}, 10000);*/
+</script>
+<pre>
+=========================
+*** -?-`` TODO  -??!- ***
+=========================
+- refresh timer *
+- indicator -> timer/events from *
+- paging (per array element possible or ?)
+- mousetrap config layer > add controls to widgets, whatever *
+- JSDOM 4 node templating (https://github.com/tmpvar/jsdom)
+- ESP?
+
+=========================
+*** Nah! Not again?!! ***
+=========================
+- because there's no magic bind between nodes and data need to walk through the DOM anyways to MVVM
+- hypercomplex maintenance unfriendly regexes, why?
+- functional templates, nah
+- rather: 1:1 as it they should be looking templates {{XXXX}} ->
+- mix for the easy path by creating different models/templates instead of no models ;-)
+</pre>
+        <h2 contenteditable="true"> To-Do List </h2>  
+         <ul contenteditable="true">  
+            <li> Break mechanical cab driver. </li>  
+            <li> Drive to abandoned factory  
+            <li> Watch video of self </li>  
+         </ul>  
+</body>
+</html>
