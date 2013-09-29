@@ -9,13 +9,6 @@
   </style>
 </head>
 <body>
-	<h1>
-		TODO: perf. comparasion to weld + extra feature ... *
-		<br/>
-		data-replace on accessor (eg. for paging) ... ! 
-		<br/>
-		» config support to bind all data acccessors? to allow updates in multi widgets without knowing what is used where (thus keeping knowledge about structure actual nest level to 0)
-	</h1>
 <div>
 <script id="template" class="" type="text/html">
 <div class="contact">
@@ -181,60 +174,8 @@
     var boundObj4 = wrapwalker2(template4, data, undefined, databinder, true, 'template3');
     boundObj4.appendTo(document.body);
 
-    /*
-    boundObj2.firstname();
-    boundObj2.lastname();
-    boundObj2.description();
-    */
-
     data.contact2.firstname="Alessio";
     boundObj2.firstname();
-    //boundObj2.list();
-  /*console.profile();
-  for(var i=0;i<100;i++) {
-    var boundObj = wrapwalker2(template, data);
-    boundObj.title("test");
-    boundObj.description();
-    boundObj.appendTo(document.body);
-    objects.push(boundObj)
-  }
-  console.profileEnd();
-
-  console.log(objects);
-  
-  var interval = setInterval(function(){
-    for(var i=0;i<10;i++) {
-      objects[i].title(new Date());
-    }
-  }, 1);
-
-  setTimeout(function(){clearInterval(interval)}, 10000);*/
 </script>
-<pre>
-=========================
-*** -?-`` TODO  -??!- ***
-=========================
-- refresh timer *
-- indicator -> timer/events from *
-- paging (per array element possible or ?)
-- mousetrap config layer > add controls to widgets, whatever *
-- JSDOM 4 node templating (https://github.com/tmpvar/jsdom)
-- ESP?
-
-=========================
-*** Nah! Not again?!! ***
-=========================
-- because there's no magic bind between nodes and data need to walk through the DOM anyways to MVVM
-- hypercomplex maintenance unfriendly regexes, why?
-- functional templates, nah
-- rather: 1:1 as it they should be looking templates {{XXXX}} ->
-- mix for the easy path by creating different models/templates instead of no models ;-)
-</pre>
-        <h2 contenteditable="true"> To-Do List </h2>  
-         <ul contenteditable="true">  
-            <li> Break mechanical cab driver. </li>  
-            <li> Drive to abandoned factory  
-            <li> Watch video of self </li>  
-         </ul>  
 </body>
 </html>
