@@ -28,6 +28,14 @@
     <button>submit</button>
   </form>
   <ul>    
+    <li class="friendsx">
+      <div class="contactx">
+        <span class="firstname"></span>
+        <input type="text" class="firstname" value="james"/>
+      </div>
+    </li>
+  </ul>
+  <ul>    
     <li class="friends">
       <div class="contact">
         <span class="firstname">firstname</span> <strong class="lastname">lastname</strong> (<span class="sex">unknown</span>) 
@@ -98,6 +106,8 @@
 <div id="template4" class="" type="text/html">
   <span class="num1"></span> 
   <span class="num2"></span> 
+  <strong class="num1"></strong> 
+  <strong class="num2"></strong> 
 </div>
 <script>
   var boundObj3, 
@@ -118,6 +128,18 @@
           firstname: "James",
           lastname: "Johnson",
           description: "Description",
+          friendsx: [
+            {
+              contactx: {
+                firstname: "shalalalalala"
+              }
+            },
+            {
+              contactx: {
+                firstname: "shalalalalala"
+              }
+            }            
+          ],
           friends: [
             { 
               contact: {
@@ -168,14 +190,32 @@
     var boundObj1 = wrapwalker2(template, data, undefined, databinder, true, 'template1');
     boundObj1.appendTo(document.body);
 
-    var boundObj2 = wrapwalker2(template2, data, undefined, databinder, true, 'template2');
-    boundObj2.appendTo(document.body);
+    // TODO: Investigate why helper functions get attached for firstlevel object and arrays. Decicde whether it makes sense to change behaviour. I guess so..
+    var boundObj21 = wrapwalker2(template2, data.contact2, undefined, databinder, true, 'template2');
+    boundObj21.appendTo(document.body);
+    
+    // TODO: Investigate why helper functions get attached for firstlevel object and arrays. Decicde whether it makes sense to change behaviour. I guess so..
+    var boundObj22 = wrapwalker2(template2, data.contact2, undefined, databinder, true, 'template4');
+    boundObj22.appendTo(document.body);
 
-    var boundObj4 = wrapwalker2(template4, data, undefined, databinder, true, 'template3');
+    // TODO: Investigate why helper functions get attached for firstlevel object and arrays. Decicde whether it makes sense to change behaviour. I guess so..
+    var boundObj23 = wrapwalker2(template2, data.contact2, undefined, databinder, true, 'template5');
+    boundObj23.appendTo(document.body);
+
+    var boundObj4 = wrapwalker2(template4, data, undefined, databinder, true, 'template6');
     boundObj4.appendTo(document.body);
 
-    data.contact2.firstname="Alessio";
-    boundObj2.firstname();
+    data.contact2.all('firstname',"Alessio");
+
+    // global updates
+    data.contact2.friendsx[0].all('firstname', 'sample!!!');
+    data.contact2.friendsx[1].all('firstname', 'sample???');
+
+    // template-scoped upates
+    // ...
+
+    console.log(data.contact2.friendsx[0]);
+    //boundObj21.firstname();
 </script>
 </body>
 </html>
